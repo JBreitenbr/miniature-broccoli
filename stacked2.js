@@ -20,3 +20,22 @@ d3.csv("https://raw.githubusercontent.com/JBreitenbr/Music-Genres/refs/heads/mai
   // List of groups = species here = value of the first column called group -> I show them on the X axis
   var groups = d3.map(data, function(d){return(d.group)}).keys()
     
+
+  // Add X axis
+  var x = d3.scaleBand()
+      .domain(groups)
+      .range([0, width])
+      .padding([0.2])
+
+
+  // Add Y axis
+  var y = d3.scaleLinear()
+    .domain([0, 1200])
+    .range([ height, 0 ]);
+  svg.append("g").attr("transform","translate(90,0)")
+    .call(d3.axisLeft(x));
+
+  // color palette = one color per subgroup
+  var color = d3.scaleOrdinal()
+    .domain(subgroups)
+    .range(['#ffd92f','#a6d854','#e78ac3',"#8da0cb"])
