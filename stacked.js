@@ -98,4 +98,23 @@ d3.csv("https://raw.githubusercontent.com/JBreitenbr/Music-Genres/refs/heads/mai
       .on("mousemove", mousemove)
       .on("mouseleave", mouseleave);
   let keys=["vormittags","nachmittags","abends","nachts"];
-var legend = svg.append("g")
+var legend = svg.append("g").attr("font-family", "sans-serif")
+      .attr("font-size", 10)
+      .attr("text-anchor", "end")
+    .selectAll("g")
+    .data(keys.slice())
+    .enter().append("g")
+	 .attr("transform", function(d, i) { return "translate(20," + (250 + i * 22) + ")"; });
+
+  legend.append("rect")
+      .attr("x", width - 19)
+      .attr("width", 19)
+      .attr("height", 19)
+      .attr("fill", color).attr("stroke","grey");
+
+  legend.append("text")
+      .attr("x", width - 24)
+      .attr("y", 9.5)
+      .attr("dy", "0.32em")
+      .text(function(d) { return d; });
+})
