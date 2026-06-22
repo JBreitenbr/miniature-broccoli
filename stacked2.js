@@ -108,8 +108,8 @@ var legend = svg.append("g")
     .selectAll("g")
     .data(keys.slice())
     .enter().append("g")
-	 .attr("transform", function(d, i) { return "translate(20," + (250 + i * 22) + ")"; });
-
+	 /*.attr("transform", function(d, i) { return "translate(20," + (250 + i * 22) + ")"; });*/
+.attr("transform", function(d, i) { return "translate("+i*(-85)+"," + (320 + 0 * 22) + ")"; });
   legend.append("rect")
       .attr("x", width - 19)
       .attr("width", 19)
